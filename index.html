@@ -60,14 +60,20 @@
         </div>
         <p class="instruction">Click to talk</p>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/@vapi-ai/web@latest"></script>
+    <!-- Load the Vapi Web SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@vapi-ai/web@latest/dist/vapi.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // Initialize the Vapi instance with your public key
             const vapi = new Vapi('f8aa5f0c-83ec-4ecb-a6d7-d1091536e330'); // Replace with your actual public key
+
+            // Get the microphone button element
             const micButton = document.getElementById('mic-button');
 
+            // Add a click event listener to the microphone button
             micButton.addEventListener('click', async () => {
                 try {
+                    // Start the Vapi assistant with your assistant ID
                     await vapi.start('cb1d3ddd-ae89-4d2e-a539-36d71fcf69e0'); // Replace with your assistant ID
                 } catch (error) {
                     console.error('Error starting the assistant:', error);
