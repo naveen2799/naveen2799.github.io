@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vapi.ai Voice Assistant</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(to bottom right, #ffe6f0, #ffccdd);
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            text-align: center;
+        }
+        .mic-button {
+            width: 100px;
+            height: 100px;
+            background-color: #d147a3;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            animation: pulse 2s infinite;
+        }
+        .mic-icon {
+            width: 50%;
+            height: 50%;
+        }
+        .instruction {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #d147a3;
+        }
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(209, 71, 163, 0.7);
+            }
+            70% {
+                transform: scale(1.1);
+                box-shadow: 0 0 0 20px rgba(209, 71, 163, 0);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(209, 71, 163, 0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="mic-button" id="mic-button">
+            <img src="mic-icon.svg" alt="Microphone Icon" class="mic-icon">
+        </div>
+        <p class="instruction">Click to talk</p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@vapi-ai/web@latest"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const vapi = new Vapi('f8aa5f0c-83ec-4ecb-a6d7-d1091536e330'); // Replace with your actual public key
+            const micButton = document.getElementById('mic-button');
+
+            micButton.addEventListener('click', async () => {
+                try {
+                    await vapi.start('cb1d3ddd-ae89-4d2e-a539-36d71fcf69e0'); // Replace with your assistant ID
+                } catch (error) {
+                    console.error('Error starting the assistant:', error);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
